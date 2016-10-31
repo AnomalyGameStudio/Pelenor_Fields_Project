@@ -54,7 +54,7 @@ GameObject:
   - 4: {fileID: 4000013214893566}
   - 114: {fileID: 114000013144441954}
   m_Layer: 0
-  m_Name: Tower
+  m_Name: Sniper Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -235,6 +235,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000012830959434, guid: afd2f39b973d93d4e9dd134cc7f1bf6a,
     type: 2}
   cost: 5
-  range: 15
+  range: 20
   damage: 1
   radius: 0
