@@ -17,6 +17,7 @@ public class BuildingManager : MonoBehaviour {
 
     public void SelectTowerType(GameObject prefab)
     {
+        Debug.Log("Prefab: " + prefab.name);
         selectedTower = prefab;
     }
 }

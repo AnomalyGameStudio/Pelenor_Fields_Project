@@ -125,7 +125,7 @@ Transform:
   m_GameObject: {fileID: 1000012256852700}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.52, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 4000011614573320}
@@ -235,6 +235,6 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1000012830959434, guid: afd2f39b973d93d4e9dd134cc7f1bf6a,
     type: 2}
   cost: 10
-  range: 10
+  range: 2500
   damage: 1
   radius: 5
