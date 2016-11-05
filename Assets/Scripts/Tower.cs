@@ -73,6 +73,12 @@ public class Tower : MonoBehaviour {
     }
 
 
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, 1 + range);
+    }
+
     // TODO: TOWER UPGRADES
 
     // Manager for tower upgrade. When player clicks on the tower, the tower tells the manager that it is active, the manager show the stats of the tower
