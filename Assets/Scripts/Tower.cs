@@ -38,7 +38,7 @@ public class Tower : MonoBehaviour {
             {
                 nearestEnemy = e;
                 dist = d;
-            }   
+            }
         }
 
         if (nearestEnemy == null)

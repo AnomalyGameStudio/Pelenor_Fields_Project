@@ -3,6 +3,8 @@ using System.Collections;
 
 public class EnemySpawner : MonoBehaviour
 {
+    GameObject enemiesGO;
+
     float spawnCD = 0.25f;
     float spawnCDRemaining = 5;
 
@@ -19,7 +21,13 @@ public class EnemySpawner : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-	
+        enemiesGO = GameObject.Find("Enemies");
+
+        if(enemiesGO == null)
+        {
+            enemiesGO = new GameObject();
+            enemiesGO.name = "Enemies";
+        }
 	}
 	
 	// Update is called once per frame
@@ -39,9 +47,12 @@ public class EnemySpawner : MonoBehaviour
             {
                 if(wc.spawned < wc.num)
                 {
+                    GameObject enemy;
+
                     //Spawn it
                     wc.spawned++;
-                    Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
+                    enemy = (GameObject) Instantiate(wc.enemyPrefab, this.transform.position, this.transform.rotation);
+                    enemy.transform.parent = enemiesGO.transform;
 
                     didSpawn = true;
                     break;
