@@ -27,8 +27,12 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            targetPathNode = null;
-            ReachedGoal();
+            //targetPathNode = null; // Removed so the enemies keep circling the ship
+            //ReachedGoal();
+            pathNodeIndex = 0;
+            targetPathNode = pathGO.transform.GetChild(pathNodeIndex);
+            pathNodeIndex++;
+            
         }
     }
 
@@ -60,7 +64,7 @@ public class Enemy : MonoBehaviour
         {
             // TODO: Consider ways to smooth this motion.
 
-            // Mode towards node
+            // Move towards node
             transform.Translate(dir.normalized * distThisFrame, Space.World);
             Quaternion targetRotation = Quaternion.LookRotation(dir);
             this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
