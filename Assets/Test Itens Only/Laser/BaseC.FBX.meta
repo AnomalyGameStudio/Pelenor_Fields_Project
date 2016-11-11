@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: c5de39d01fd6d7546a19db95c5b0ef73
-timeCreated: 1478633055
+guid: dfa0ba8a33caabb4cb10260dd1d7defd
+timeCreated: 1478875637
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
@@ -9,7 +9,7 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: 'EMP Turret '
+    4300000: BaseCannon
   materials:
     importMaterials: 1
     materialName: 0
