@@ -17,7 +17,7 @@ public class Tower : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        turretTransform = transform.Find("Turret");
+        //turretTransform = transform.Find("Turret");
 	}
 	
 	// Update is called once per frame
@@ -46,11 +46,11 @@ public class Tower : MonoBehaviour {
             Debug.Log("No Enemies");
             return;
         }
-
+        
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir);
-
-        turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+        
+        //turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
 
         fireCooldownLeft -= Time.deltaTime;
 
@@ -83,4 +83,27 @@ public class Tower : MonoBehaviour {
 
     // Manager for tower upgrade. When player clicks on the tower, the tower tells the manager that it is active, the manager show the stats of the tower
     // Add a collider to the tower so it can use the OnMouseDown/OnMouseUp
+
+    
+    private bool canUpgradeTurret()
+    {
+        TurretData td = GetComponent<TurretData>();
+        TurretData.TurretLevel nextLevel = td.getNextLevel();
+
+        if(nextLevel != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void OnMouseUp()
+    {
+        if(canUpgradeTurret())
+        {
+            TurretData td = GetComponent<TurretData>();
+            td.increaseLevel();
+        }
+    }
 }
