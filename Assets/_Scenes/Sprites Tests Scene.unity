@@ -181,11 +181,11 @@ Halo:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 824397500}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
-  m_Size: 5
+  m_Size: 0.1
 --- !u!95 &824397503
 Animator:
   serializedVersion: 3
