@@ -44,8 +44,7 @@ public class TurretData : MonoBehaviour
             }
         }
     }
-
-
+    
     void OnEnable()
     {
         CurrentLevel = levels[0];
@@ -75,14 +74,4 @@ public class TurretData : MonoBehaviour
             CurrentLevel = levels[currentLevelIndex + 1];
         }
     }
-
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 }
