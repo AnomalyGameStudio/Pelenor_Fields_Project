@@ -3,13 +3,15 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class ScoreManager : MonoBehaviour {
-
+public class ScoreManager : Singleton<ScoreManager>
+{
     public int lives = 20;
     public int money = 100;
 
     public Text moneyText;
     public Text livesText;
+
+    protected ScoreManager() {}
 
     public void LoseLife(int l=1)
     {
