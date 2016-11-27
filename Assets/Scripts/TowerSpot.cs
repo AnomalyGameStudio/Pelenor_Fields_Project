@@ -13,13 +13,13 @@ public class TowerSpot : MonoBehaviour
         {
             ScoreManager scoreManager = ScoreManager.Instance;
 
-            if (scoreManager.money < buildingManager.selectedTower.GetComponent<Tower>().cost)
+            if (scoreManager.Money < buildingManager.selectedTower.GetComponent<Tower>().cost)
             {
                 Debug.Log("Not Enough money!");
                 return;
             }
 
-            scoreManager.money -= buildingManager.selectedTower.GetComponent<Tower>().cost;
+            scoreManager.addMoney ( - buildingManager.selectedTower.GetComponent<Tower>().cost);
 
             // FIXME: Right we assume that we're an object nested in a parent.
             Instantiate(buildingManager.selectedTower, transform.parent.position, transform.parent.rotation);
