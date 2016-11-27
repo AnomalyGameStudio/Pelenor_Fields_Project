@@ -68,10 +68,21 @@ public class TurretData : MonoBehaviour
 
     public void increaseLevel()
     {
+        // Gets the index of the Next Level
+        // TODO: Change this to get from the UI input
         int currentLevelIndex = levels.IndexOf(currentLevel);
+
+        // Check if there is a level to go up
         if(currentLevelIndex < levels.Count - 1)
         {
-            CurrentLevel = levels[currentLevelIndex + 1];
+            // Gets the next level
+            TurretLevel nextLevel = levels[currentLevelIndex + 1];
+
+            // Sends the Negative cost to the ScoreManager. The routines returns True if there is enough money for the upgrade
+            if(ScoreManager.Instance.addMoney( - nextLevel.cost))
+            {
+                CurrentLevel = nextLevel;
+            }
         }
     }
 }
