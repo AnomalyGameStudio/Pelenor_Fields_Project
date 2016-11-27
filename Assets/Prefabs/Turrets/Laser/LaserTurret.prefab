@@ -353,7 +353,7 @@ MonoBehaviour:
   levels:
   - cost: 200
     visualization: {fileID: 1000010627119572}
-  - cost: 110
+  - cost: 16
     visualization: {fileID: 1000010024802902}
   - cost: 120
     visualization: {fileID: 1000011182766262}

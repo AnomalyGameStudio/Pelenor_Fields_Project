@@ -339,7 +339,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Sniper Tower
+  m_Text: 'Laser Tower
 
 '
 --- !u!222 &346178993
@@ -523,7 +523,7 @@ GameObject:
   - 114: {fileID: 719355814}
   - 114: {fileID: 719355813}
   m_Layer: 5
-  m_Name: Sniper Tower
+  m_Name: Laser Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -837,7 +837,7 @@ Prefab:
     - target: {fileID: 224000012494164464, guid: 2d388129f09c4dd4d9702a116bb9bcd1,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 22
+      value: 246.97
       objectReference: {fileID: 0}
     - target: {fileID: 224000012494164464, guid: 2d388129f09c4dd4d9702a116bb9bcd1,
         type: 2}
