@@ -3,7 +3,8 @@ using System.Collections;
 
 public class Tower : MonoBehaviour {
 
-    Transform turretTransform;
+    //Transform turretTransform;
+    TurretData turretData;
 
     public GameObject bulletPrefab;
     public int cost = 5;
@@ -16,9 +17,10 @@ public class Tower : MonoBehaviour {
     float fireCooldownLeft = 0;
 
 	// Use this for initialization
-	void Start () {
-        turretTransform = transform.Find("Turret");
-	}
+	void Start ()
+    {
+        turretData = GetComponent<TurretData>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -46,11 +48,13 @@ public class Tower : MonoBehaviour {
             Debug.Log("No Enemies");
             return;
         }
-
+        
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir);
-
-        turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0);
+        
+        // TODO: Not Working Properly wrong rotation
+        turretData.CurrentLevel.visualization.transform.rotation = Quaternion.Euler(turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.x, lookRot.eulerAngles.y, turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.z);
+        //turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0); // OLD
 
         fireCooldownLeft -= Time.deltaTime;
 
@@ -60,7 +64,7 @@ public class Tower : MonoBehaviour {
             ShootAt(nearestEnemy);
         }
     }
-
+    
     void ShootAt(Enemy e)
     {
         // TODO: Fire out the tip!
@@ -83,4 +87,27 @@ public class Tower : MonoBehaviour {
 
     // Manager for tower upgrade. When player clicks on the tower, the tower tells the manager that it is active, the manager show the stats of the tower
     // Add a collider to the tower so it can use the OnMouseDown/OnMouseUp
+
+    
+    private bool canUpgradeTurret()
+    {
+        
+        TurretData.TurretLevel nextLevel = turretData.getNextLevel();
+
+        if(nextLevel != null)
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void OnMouseUp()
+    {
+        if(canUpgradeTurret())
+        {
+            //turretData = GetComponent<TurretData>();
+            turretData.increaseLevel();
+        }
+    }
 }

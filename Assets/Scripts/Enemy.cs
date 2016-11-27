@@ -90,8 +90,7 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        // TODO: Do this more safely;
-        GameObject.FindObjectOfType<ScoreManager>().money += moneyValue;
+        ScoreManager.Instance.addMoney(moneyValue);
         Destroy(gameObject);
     }
 }

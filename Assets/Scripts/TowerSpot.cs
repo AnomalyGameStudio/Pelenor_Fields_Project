@@ -7,24 +7,22 @@ public class TowerSpot : MonoBehaviour
     {
         Debug.Log("TowerSpot clicked;");
 
+        BuildingManager buildingManager = BuildingManager.Instance;
 
-        BuildingManager bm = GameObject.FindObjectOfType<BuildingManager>();
-
-        if(bm.selectedTower != null)
+        if(buildingManager.selectedTower != null)
         {
+            ScoreManager scoreManager = ScoreManager.Instance;
 
-            ScoreManager sm = GameObject.FindObjectOfType<ScoreManager>();
-
-            if (sm.money < bm.selectedTower.GetComponent<Tower>().cost)
+            if (scoreManager.Money < buildingManager.selectedTower.GetComponent<Tower>().cost)
             {
-                Debug.Log("Not Enough money1");
+                Debug.Log("Not Enough money!");
                 return;
             }
 
-            sm.money -= bm.selectedTower.GetComponent<Tower>().cost;
+            scoreManager.addMoney ( - buildingManager.selectedTower.GetComponent<Tower>().cost);
 
             // FIXME: Right we assume that we're an object nested in a parent.
-            Instantiate(bm.selectedTower, transform.parent.position, transform.parent.rotation);
+            Instantiate(buildingManager.selectedTower, transform.parent.position, transform.parent.rotation);
 
             Destroy(transform.parent.gameObject);
         }
