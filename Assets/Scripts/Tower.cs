@@ -57,9 +57,11 @@ public class Tower : MonoBehaviour
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir);
         
-        // TODO: Not Working Properly wrong rotation
-        turretData.CurrentLevel.visualization.transform.rotation = Quaternion.Euler(turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.x, lookRot.eulerAngles.y, turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.z);
+        // TODO: Not Working Properly wrong rotation. Offset the Z 90 degrees somehow
+        turretData.CurrentLevel.visualization.transform.rotation = Quaternion.Euler(turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.x, lookRot.eulerAngles.y, (turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.z - 90));
         //turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0); // OLD
+
+        Debug.DrawLine(muzzle.position, nearestEnemy.transform.position, Color.green);
 
         fireCooldownLeft -= Time.deltaTime;
 
