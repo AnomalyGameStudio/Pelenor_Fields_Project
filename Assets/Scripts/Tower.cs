@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower : MonoBehaviour {
-
-    //Transform turretTransform;
+public class Tower : MonoBehaviour
+{
+    Transform muzzle;
     TurretData turretData;
 
     public GameObject bulletPrefab;
@@ -19,7 +19,12 @@ public class Tower : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        // Gets the Component with the info about the Turret
         turretData = GetComponent<TurretData>();
+
+        // TODO: change the Muzzle on upgrade. Maybe store the muzzle position on Turret Data
+        // Gets the Muzzle of the tower to use in the ShootAt Method
+        muzzle = turretData.CurrentLevel.visualization.transform.FindChild("Muzzle");
     }
 	
 	// Update is called once per frame
@@ -68,7 +73,8 @@ public class Tower : MonoBehaviour {
     void ShootAt(Enemy e)
     {
         // TODO: Fire out the tip!
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        // OLD: GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
 
         Bullet b = bulletGO.GetComponent<Bullet>();
         b.target = e.transform;
