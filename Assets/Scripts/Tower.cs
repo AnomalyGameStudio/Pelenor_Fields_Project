@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(TurretData))]
 public class Tower : MonoBehaviour
 {
     Transform muzzle;
@@ -25,6 +27,7 @@ public class Tower : MonoBehaviour
         // TODO: change the Muzzle on upgrade. Maybe store the muzzle position on Turret Data
         // Gets the Muzzle of the tower to use in the ShootAt Method
         muzzle = turretData.CurrentLevel.visualization.transform.FindChild("Muzzle");
+        
     }
 	
 	// Update is called once per frame
@@ -50,7 +53,7 @@ public class Tower : MonoBehaviour
 
         if (nearestEnemy == null)
         {
-            Debug.Log("No Enemies");
+            //Debug.Log("No Enemies");
             return;
         }
         
