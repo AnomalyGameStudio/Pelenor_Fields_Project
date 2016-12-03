@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Tower : MonoBehaviour {
-
-    //Transform turretTransform;
+[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(TurretData))]
+public class Tower : MonoBehaviour
+{
+    Transform muzzle;
     TurretData turretData;
 
     public GameObject bulletPrefab;
@@ -19,7 +21,13 @@ public class Tower : MonoBehaviour {
 	// Use this for initialization
 	void Start ()
     {
+        // Gets the Component with the info about the Turret
         turretData = GetComponent<TurretData>();
+
+        // TODO: change the Muzzle on upgrade. Maybe store the muzzle position on Turret Data
+        // Gets the Muzzle of the tower to use in the ShootAt Method
+        muzzle = turretData.CurrentLevel.visualization.transform.FindChild("Muzzle");
+        
     }
 	
 	// Update is called once per frame
@@ -45,16 +53,18 @@ public class Tower : MonoBehaviour {
 
         if (nearestEnemy == null)
         {
-            Debug.Log("No Enemies");
+            //Debug.Log("No Enemies");
             return;
         }
         
         Vector3 dir = nearestEnemy.transform.position - this.transform.position;
         Quaternion lookRot = Quaternion.LookRotation(dir);
         
-        // TODO: Not Working Properly wrong rotation
-        turretData.CurrentLevel.visualization.transform.rotation = Quaternion.Euler(turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.x, lookRot.eulerAngles.y, turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.z);
+        // TODO: Not Working Properly wrong rotation. Offset the Z 90 degrees somehow
+        turretData.CurrentLevel.visualization.transform.rotation = Quaternion.Euler(turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.x, lookRot.eulerAngles.y, (turretData.CurrentLevel.visualization.transform.rotation.eulerAngles.z - 90));
         //turretTransform.rotation = Quaternion.Euler(0, lookRot.eulerAngles.y, 0); // OLD
+
+        Debug.DrawLine(muzzle.position, nearestEnemy.transform.position, Color.green);
 
         fireCooldownLeft -= Time.deltaTime;
 
@@ -68,7 +78,8 @@ public class Tower : MonoBehaviour {
     void ShootAt(Enemy e)
     {
         // TODO: Fire out the tip!
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        // OLD: GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, this.transform.position, this.transform.rotation);
+        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, muzzle.position, muzzle.rotation);
 
         Bullet b = bulletGO.GetComponent<Bullet>();
         b.target = e.transform;
