@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
-    public int lives = 20;
+    private int lives = 20;
     private int money = 100;
 
     public Text moneyText;
