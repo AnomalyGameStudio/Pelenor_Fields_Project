@@ -50,7 +50,7 @@ public class Bullet : MonoBehaviour {
 
         if(radius == 0)
         {
-            target.GetComponent<Enemy>().TakeDamage(damage);
+            target.GetComponent<IDamageable>().TakeDamage(damage);
         }
         else
         {
@@ -58,7 +58,7 @@ public class Bullet : MonoBehaviour {
 
             foreach(Collider c in cols)
             {
-                Enemy e = c.GetComponent<Enemy>();
+                IDamageable e = c.GetComponent<IDamageable>();
                 if (e!= null)
                 {
                     // TODO: You COULD do a falloff of damage based on distance, but that's rare for TD games
