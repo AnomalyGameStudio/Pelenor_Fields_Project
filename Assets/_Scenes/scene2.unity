@@ -389,7 +389,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveComps:
-  - enemyPrefab: {fileID: 1000013404007234, guid: 56160ab74fbc35945af60f3de87878f6,
+  - enemyPrefab: {fileID: 1000010650197420, guid: 520eb4afea3862e49ba048bf8a5c1f1e,
+      type: 2}
+    num: 5
+  - enemyPrefab: {fileID: 1000011972521228, guid: bb16629cc6f3e78488952991f5490cb0,
       type: 2}
     num: 5
 --- !u!1 &582486852
@@ -978,7 +981,7 @@ GameObject:
   - 114: {fileID: 1100171416}
   m_Layer: 0
   m_Name: _SCRIPTS_
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1007,7 +1010,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da7c9d9f2229eda4b944fd24bce4e40c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lives: 20
   moneyText: {fileID: 1375585324}
   livesText: {fileID: 1872379086}
 --- !u!4 &1100171418
@@ -1705,13 +1707,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveComps:
-  - enemyPrefab: {fileID: 1000013404007234, guid: d6b2ec74d421e66489d5eb5d331e5e9f,
+  - enemyPrefab: {fileID: 1000012177117482, guid: 99ed528caca599d49b93da063a0d7f20,
       type: 2}
-    num: 5
-  - enemyPrefab: {fileID: 1000013404007234, guid: 56160ab74fbc35945af60f3de87878f6,
+    num: 10
+  - enemyPrefab: {fileID: 1000013661336834, guid: 9062b41ce1b8d464c9f31a326f0b1623,
       type: 2}
     num: 1
-  - enemyPrefab: {fileID: 1000013404007234, guid: d6b2ec74d421e66489d5eb5d331e5e9f,
+  - enemyPrefab: {fileID: 1000013416456218, guid: d6c6bda8887aa9f4b8341144e06ea64a,
       type: 2}
     num: 5
 --- !u!1 &1832297121

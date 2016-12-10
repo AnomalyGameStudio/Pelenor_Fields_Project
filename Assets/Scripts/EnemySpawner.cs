@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
     GameObject enemiesGO;
 
     float spawnCD = 0.25f;
-    float spawnCDRemaining = 5;
+    float spawnCDRemaining = 10;
 
     [System.Serializable]
     public class WaveComponent
