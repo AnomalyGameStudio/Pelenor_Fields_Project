@@ -36,6 +36,8 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         Debug.Log("Game Over");
 
+        Destroy(GameObject.FindGameObjectWithTag("GameController"));
+
         // TODO: Send the player to a game-over screen instead!
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
