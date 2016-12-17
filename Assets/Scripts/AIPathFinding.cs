@@ -28,17 +28,23 @@ public class AIPathFinding : MonoBehaviour {
     // How often to recalculate the path (in seconds)
     public float repathRate = 0.5f;
     private float lastRepath = -9999;
-    
-	void Start ()
+
+    private GameObject[] nodes;
+
+    Transform parentPath;
+    int currentPathChild = 0;
+
+    void Start ()
     {
         seeker = GetComponent<Seeker>();
         controller = GetComponent<CharacterController>();
 
-        GameObject[] nodes = GameObject.FindGameObjectsWithTag("PathNode");
 
-        int random = Random.Range(0, nodes.Length - 1);
-
-        targetPosition = nodes[random].transform; 
+        // Gets a random node to go
+        nodes = GameObject.FindGameObjectsWithTag("PathNode");
+        Debug.Log(nodes.Length);
+        getNewPath();
+        
 	}
 	
     public void OnPathComplete(Path p)
@@ -50,6 +56,15 @@ public class AIPathFinding : MonoBehaviour {
             // Reset the waypoint counter so that we start to move towards the first point in the path
             currentWaypoint = 0;
         }
+    }
+
+    private void getNewPath()
+    {
+        currentPathChild = 0;
+        int random = Random.Range(0, nodes.Length);
+        Debug.Log("Random: " + random);
+        parentPath = nodes[random].transform;
+        targetPosition = parentPath.GetChild(currentPathChild);
     }
 
     public void Update()
@@ -75,23 +90,52 @@ public class AIPathFinding : MonoBehaviour {
         {
             Debug.Log("End of PAth Reached");
             currentWaypoint++;
+
+            int random = Random.Range(0, nodes.Length - 1);
+            currentPathChild++;
+
+            if(currentPathChild > parentPath.childCount-1)
+            {
+                getNewPath();
+            }
+            else
+            {
+                targetPosition = parentPath.GetChild(currentPathChild);
+            }
+
+            
+
+            lastRepath = Time.time + Random.value * repathRate * 0.5f;
+            seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
+
             return;
         }
 
         // Direction to the next waypoint
         Vector3 dir = (path.vectorPath[currentWaypoint] - transform.position).normalized;
-
-
+        
         // TODO Find a way to rotate
         // Rotates the Object to look at the next node
+        Quaternion targetRotation = Quaternion.LookRotation(dir);
+        //Quaternion rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5);
+
+        //this.transform.rotation = Quaternion.Euler(new Vector3(this.transform.rotation.x, targetRotation.y, this.transform.rotation.z));
+
+
+
+
+        dir = path.vectorPath[currentWaypoint] - this.transform.localPosition;
+
+        float distThisFrame = speed * Time.deltaTime;
+        transform.Translate(dir.normalized * distThisFrame, Space.World);
         //Quaternion targetRotation = Quaternion.LookRotation(dir);
-        //this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
+        this.transform.rotation = Quaternion.Lerp(this.transform.rotation, targetRotation, Time.deltaTime * 5);
+
+
+        //dir *= speed;
         
-
-        dir *= speed;
-
         // Note that SimpleMove takes a velocity in meters/second, so we should not multiply by Time.deltaTime
-        controller.SimpleMove(dir);
+        //controller.SimpleMove(dir);
         
         // The commented line is equivalent to the one below, but the one that is used
         // Is slightly faster since it does not have to calculate a square root
