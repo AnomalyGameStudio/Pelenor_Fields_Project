@@ -5,13 +5,13 @@ using Pathfinding;
 
 
 [RequireComponent(typeof(Seeker))]
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public class AIPathFinding : MonoBehaviour {
 
     public Transform targetPosition;
 
     private Seeker seeker;
-    private CharacterController controller;
+    //private CharacterController controller;
 
     // The calculated path
     public Path path;
@@ -37,12 +37,10 @@ public class AIPathFinding : MonoBehaviour {
     void Start ()
     {
         seeker = GetComponent<Seeker>();
-        controller = GetComponent<CharacterController>();
-
-
+        //controller = GetComponent<CharacterController>();
+        
         // Gets a random node to go
         nodes = GameObject.FindGameObjectsWithTag("PathNode");
-        Debug.Log(nodes.Length);
         getNewPath();
         
 	}
@@ -62,7 +60,7 @@ public class AIPathFinding : MonoBehaviour {
     {
         currentPathChild = 0;
         int random = Random.Range(0, nodes.Length);
-        Debug.Log("Random: " + random);
+        
         parentPath = nodes[random].transform;
         targetPosition = parentPath.GetChild(currentPathChild);
     }
@@ -102,9 +100,7 @@ public class AIPathFinding : MonoBehaviour {
             {
                 targetPosition = parentPath.GetChild(currentPathChild);
             }
-
             
-
             lastRepath = Time.time + Random.value * repathRate * 0.5f;
             seeker.StartPath(transform.position, targetPosition.position, OnPathComplete);
 

@@ -54,9 +54,9 @@ GameObject:
   - 4: {fileID: 4000012312130796}
   - 114: {fileID: 114000013483390670}
   - 114: {fileID: 114000013208364764}
-  - 114: {fileID: 114000011422134096}
-  - 143: {fileID: 143000012079753016}
   - 114: {fileID: 114000012675132072}
+  - 114: {fileID: 114000011422134096}
+  - 114: {fileID: 114000012827565200}
   m_Layer: 0
   m_Name: Alien2
   m_TagString: Untagged
@@ -183,13 +183,33 @@ MonoBehaviour:
   speed: 20
   nextWaypointDistance: 3
   repathRate: 0.5
+--- !u!114 &114000012827565200
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000013416456218}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb6a34d769a1e4ac7b0b30e433aa443c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  smoothType: 0
+  subdivisions: 2
+  iterations: 1
+  strength: 0.5
+  uniformLength: 1
+  maxSegmentLength: 1
+  bezierTangentLength: 0.4
+  offset: 0.2
+  factor: 0.1
 --- !u!114 &114000013208364764
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013416456218}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b085abe5b655e404dbbf165947d4825d, type: 3}
   m_Name: 
@@ -203,7 +223,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000013416456218}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 79ad9cf74c58b85439742c3c70c6afa5, type: 3}
   m_Name: 
@@ -227,20 +247,3 @@ CapsuleCollider:
   m_Height: 2.78
   m_Direction: 1
   m_Center: {x: 0.018303752, y: 0, z: 0.57018423}
---- !u!143 &143000012079753016
-CharacterController:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1000013416456218}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0, z: 0}
