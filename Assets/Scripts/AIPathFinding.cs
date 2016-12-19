@@ -5,13 +5,13 @@ using Pathfinding;
 
 
 [RequireComponent(typeof(Seeker))]
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public class AIPathFinding : MonoBehaviour {
 
     public Transform targetPosition;
 
     private Seeker seeker;
-    private CharacterController controller;
+    //private CharacterController controller;
 
     // The calculated path
     public Path path;
@@ -37,7 +37,7 @@ public class AIPathFinding : MonoBehaviour {
     void Start ()
     {
         seeker = GetComponent<Seeker>();
-        controller = GetComponent<CharacterController>();
+        //controller = GetComponent<CharacterController>();
         
         // Gets a random node to go
         nodes = GameObject.FindGameObjectsWithTag("PathNode");
