@@ -7,9 +7,11 @@ public class ScoreManager : Singleton<ScoreManager>
 {
     private int lives = 100;
     private int money = 100;
+    private int shield = 0;
 
     public Text moneyText;
     public Text livesText;
+    public Text shieldText;
 
     protected ScoreManager() {}
 
@@ -21,7 +23,20 @@ public class ScoreManager : Singleton<ScoreManager>
         }
     }
 
+    public int Shield
+    {
+        get
+        {
+            return shield;
+        }
 
+        set
+        {
+            shield = value;
+        }
+    }
+
+    
     public void LoseLife(int l=1)
     {
         lives -= l;
@@ -45,6 +60,7 @@ public class ScoreManager : Singleton<ScoreManager>
         // FIXME: This Doesn't actually need to update the text every frame.
         moneyText.text = "Money: " + money;
         livesText.text = "Lives: " + lives;
+        shieldText.text = "Shield: " + shield;
 
     }
 
