@@ -19,9 +19,17 @@ public class PlayerController : MonoBehaviour, IDamageable
     void Start()
     {
         currentShield = shield;
+        // Initialize the player life
+        currentShield = maxShield;
+        currentArmor = maxArmor;
+        currentHull = maxHull;
+
+        // Set up recharge cooldown
         nextTimeRecharge = Time.time + RechargeCooldown;
 
         ScoreManager.Instance.Shield = (int) currentShield;
+        // Updates the UI
+        UpdateScore();
     }
 
     void Update()
