@@ -5,12 +5,16 @@ using UnityEngine.UI;
 
 public class ScoreManager : Singleton<ScoreManager>
 {
-    private int lives = 100;
-    private int money = 100;
-    private int shield = 0;
+    private float hull = 0;
+    private float armor = 0;
+    private float shield = 0;
 
+    private int money = 100;
+    
     public Text moneyText;
-    public Text livesText;
+
+    public Text hullText;
+    public Text armorText;
     public Text shieldText;
 
     protected ScoreManager() {}
@@ -23,7 +27,7 @@ public class ScoreManager : Singleton<ScoreManager>
         }
     }
 
-    public int Shield
+    public float Shield
     {
         get
         {
@@ -32,16 +36,56 @@ public class ScoreManager : Singleton<ScoreManager>
 
         set
         {
-            shield = value;
+            if (shield != value)
+            {
+                shield = value;
+                shieldText.text = "Shield: " + shield;
+            }
         }
     }
 
-    
+    public float Armor
+    {
+        get
+        {
+            return armor;
+        }
+
+        set
+        {
+            if (armor != value)
+            {
+                armor = value;
+                armorText.text = "Armor: " + armor;
+            }
+            
+        }
+    }
+
+    public float Hull
+    {
+        get
+        {
+            return hull;
+        }
+
+        set
+        {
+            if( hull != value)
+            {
+                hull = value;
+                hullText.text = "Hull: " + hull;
+            }
+            
+        }
+    }
+
+    // DEPRECATED
     public void LoseLife(int l=1)
     {
-        lives -= l;
+        hull -= l;
 
-        if(lives <= 0)
+        if(hull <= 0)
         {
             GameOver();
         }
@@ -59,9 +103,6 @@ public class ScoreManager : Singleton<ScoreManager>
     {
         // FIXME: This Doesn't actually need to update the text every frame.
         moneyText.text = "Money: " + money;
-        livesText.text = "Lives: " + lives;
-        shieldText.text = "Shield: " + shield;
-
     }
 
     // Use for all money transactions
