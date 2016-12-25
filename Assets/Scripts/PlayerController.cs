@@ -47,19 +47,24 @@ public class PlayerController : MonoBehaviour, IDamageable
 
 	public void TakeDamage(float damage)
     {
+        // If the ship still has the shields Up (Shield > 0), the damage should be to the shield
         if(currentShield > 0)
         {
-            currentShield -= damage;
-            nextTimeRecharge = Time.time + RechargeCooldown;
-            ScoreManager.Instance.Shield = (int) currentShield;
-
-            // TODO add a clamp to the damage.
+            TakeShieldDamage(damage);
         }
+        // If the ship still has armor, the damage will be dealt to the Armor
+        else if (currentArmor > 0)
+        {
+            TakeArmorDamage(damage);
+        }
+        // If the ship doesn't have neither armor nor shield, deal damage to the Hull
         else
         {
-            ScoreManager.Instance.LoseLife((int)damage);
+            TakeHullDamage(damage);
         }
-        //ScoreManager.Instance.LoseLife ((int) damage);
+
+        // Updates the UI
+        UpdateScore();
     }
 
     // TODO Verificar se vai ser usado publicamente, enquanto isso deixar publico
