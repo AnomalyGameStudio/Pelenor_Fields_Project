@@ -18,7 +18,6 @@ public class PlayerController : MonoBehaviour, IDamageable
 
     void Start()
     {
-        currentShield = shield;
         // Initialize the player life
         currentShield = maxShield;
         currentArmor = maxArmor;
@@ -27,7 +26,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         // Set up recharge cooldown
         nextTimeRecharge = Time.time + RechargeCooldown;
 
-        ScoreManager.Instance.Shield = (int) currentShield;
         // Updates the UI
         UpdateScore();
     }
@@ -67,7 +65,6 @@ public class PlayerController : MonoBehaviour, IDamageable
         UpdateScore();
     }
 
-    // TODO Verificar se vai ser usado publicamente, enquanto isso deixar publico
     // Code responsible to handle the Damage applied to the Shield
     private void TakeShieldDamage(float damage)
     {
