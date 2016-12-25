@@ -36,7 +36,13 @@ public class PlayerController : MonoBehaviour, IDamageable
     {
         // Recharge the shield
         rechargeShield();
-        
+    }
+
+    private void UpdateScore()
+    {
+        ScoreManager.Instance.Shield = currentShield;
+        ScoreManager.Instance.Armor = currentArmor;
+        ScoreManager.Instance.Hull = currentHull;
     }
 
 	public void TakeDamage(float damage)
