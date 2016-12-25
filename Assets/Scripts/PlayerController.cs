@@ -48,7 +48,34 @@ public class PlayerController : MonoBehaviour, IDamageable
     }
 
     // TODO Verificar se vai ser usado publicamente, enquanto isso deixar publico
+    // Code responsible to handle the Damage applied to the Shield
+    private void TakeShieldDamage(float damage)
+    {
+        // Damages the Shield
+        currentShield -= damage;
+        // Set up the recharge cooldown
+        nextTimeRecharge = Time.time + RechargeCooldown;
+        // Clamp the current Shield between 0 and the Maximum shield
+        currentShield = Mathf.Clamp(currentShield, 0, maxShield);
+    }
 
+    // Code responsible to handle the Damage applied to the Armor
+    private void TakeArmorDamage(float damage)
+    {
+        // Damages the Armor
+        currentArmor -= damage;
+        // Clamp the Current armor between 0 and the Maximum Armor
+        currentArmor = Mathf.Clamp(currentArmor, 0, maxArmor);
+    }
+
+    // Code responsible to handle the Damage applied to the Hull
+    private void TakeHullDamage(float damage)
+    {
+        // Damages the Hull
+        currentHull -= damage;
+        // Clamp the Current Hull between 0 and the Maximum Hull
+        currentHull = Mathf.Clamp(currentHull, 0, maxHull);
+    }
     private void rechargeShield()
     {
         if(Time.time > nextTimeRecharge && currentShield < shield)
