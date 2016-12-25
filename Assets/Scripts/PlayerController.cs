@@ -4,15 +4,16 @@ using System.Collections;
 public class PlayerController : MonoBehaviour, IDamageable
 {
 
-    public float shield = 100f;
-    public float armor = 100f;
-    public float hull = 100f;
+    public float maxShield = 100f;
+    public float maxArmor = 100f;
+    public float maxHull = 100f;
 
     public float shieldRechargeRate = 1f;
     public float RechargeCooldown = 1f;
 
-    private float currentShield = 0;
-
+    private float currentShield = 0f;
+    private float currentArmor = 0f;
+    private float currentHull = 0f;
     private float nextTimeRecharge = 0f;
 
     void Start()
