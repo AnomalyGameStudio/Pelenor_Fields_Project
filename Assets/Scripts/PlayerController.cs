@@ -93,17 +93,18 @@ public class PlayerController : MonoBehaviour, IDamageable
         // Clamp the Current Hull between 0 and the Maximum Hull
         currentHull = Mathf.Clamp(currentHull, 0, maxHull);
     }
+
+    // TODO Verificar se vai ser usado publicamente, enquanto isso deixar private
     private void rechargeShield()
     {
-        if(Time.time > nextTimeRecharge && currentShield < shield)
+        // If the shield is less than max and the Recharge is not on cooldown, heals the shield
+        if(Time.time > nextTimeRecharge && currentShield < maxShield)
         {
+            // Sends a negative value to the shield Damage Handler. This will act as heal;
+            TakeShieldDamage(-shieldRechargeRate);
             
-            // TODO Update UI... Not Idea how this will work
-            currentShield += shieldRechargeRate * Time.deltaTime;
-            
-            // TODO See if this is correct. Might need to see the documentation
-            currentShield = Mathf.Clamp(currentShield, 0, shield);
-            ScoreManager.Instance.Shield = (int)currentShield;
+            // Updates the UI
+            UpdateScore();
         }
     }
 }
