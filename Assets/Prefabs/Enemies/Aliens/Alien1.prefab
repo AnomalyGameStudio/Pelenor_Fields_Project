@@ -156,7 +156,7 @@ MonoBehaviour:
     type: 2}
   range: 30
   fireRate: 0.5
-  damage: 1
+  damage: 5
   radius: 0
 --- !u!114 &114000010400671964
 MonoBehaviour:
