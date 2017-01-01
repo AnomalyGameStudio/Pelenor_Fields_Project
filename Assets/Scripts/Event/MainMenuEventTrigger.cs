@@ -17,4 +17,9 @@ public class MainMenuEventTrigger : MonoBehaviour
     {
         EventManager.TriggerEvent("LoadLevel");
     }
+
+    public void TestThings(string wtf)
+    {
+        Debug.Log(wtf);
+    }
 }
