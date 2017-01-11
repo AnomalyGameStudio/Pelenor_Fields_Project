@@ -92,6 +92,11 @@ public class PlayerController : MonoBehaviour, IDamageable
         currentHull -= damage;
         // Clamp the Current Hull between 0 and the Maximum Hull
         currentHull = Mathf.Clamp(currentHull, 0, maxHull);
+
+        if(currentHull <= 0)
+        {
+            ScoreManager.Instance.GameOver();
+        }
     }
 
     // TODO Verificar se vai ser usado publicamente, enquanto isso deixar private
