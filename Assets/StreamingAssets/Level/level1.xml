@@ -1,0 +1,30 @@
+<level>
+    <name>Level1</name>
+    <cooldown>15</cooldown>
+    <waves>
+        <wave>
+            <enemies>
+                <quantity>10</quantity>
+                <prefab>Aliens/Alien1</prefab>
+                <cooldown>3</cooldown>
+            </enemies>
+            <enemies>
+                <quantity>5</quantity>
+                <prefab>Aliens/Alien2</prefab>
+                <cooldown>6</cooldown>
+            </enemies>
+        </wave>
+        <wave>
+            <enemies>
+                <quantity>10</quantity>
+                <prefab>Aliens/Alien2</prefab>
+                <cooldown>3</cooldown>
+            </enemies>
+            <enemies>
+                <quantity>5</quantity>
+                <prefab>Aliens/Alien1</prefab>
+                <cooldown>6</cooldown>
+            </enemies>
+        </wave>
+    </waves>
+</level>
