@@ -1,0 +1,26 @@
+## This PR Includes:
+- Feature 1
+- Feature 2
+- Feature N
+
+## To Dos
+- [ ] Make sure there is no hard code
+- [ ] Another To Do.
+
+## Steps to Test
+Outline the steps to test or reproduce the PR here.
+
+```sh
+git pull --prune
+git checkout <feature_branch>
+bundle; script/server
+```
+
+## Documentation
+
+### Feature 1
+
+Do something
+- **Method:** `Get`
+- **Route:** `/api/feature1`
+- **Output:** `200 (success)`
